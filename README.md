@@ -14,7 +14,7 @@
 
 ---
 
-![Application Screenshot](Images And Resources/Preview.png)
+![Application Screenshot](Images%20And%20Resources/Preview.png)
 
 
 ## 🚀 Overview
