@@ -62,26 +62,6 @@ Delphi VOIP Phone is a minimal yet complete peer-to-peer voice calling applicati
 | HANGUP | 4 | Bidirectional | Ending the call |
 | AUDIO | 5 | Bidirectional | Audio data follows |
 
-### State Machine
-
-
-     ┌──────────────────────────────────────┐
-     │                                      │
-     ▼                                      │
-┌─────────┐   Incoming      ┌──────────┐   │
-│  IDLE   │───Connection───►│ RINGING  │   │
-│   (0)   │                 │   (1)    │   │
-└────┬────┘                 └────┬─────┘   │
-     │                           │         │
-     │ Call                Accept│Decline  │
-     │ Button                    │         │
-     ▼                           ▼         │
-┌─────────┐   CALL_ACCEPT   ┌──────────┐   │
-│ CALLING │◄───────────────►│ IN_CALL  │───┘
-│   (3)   │                 │   (2)    │
-└─────────┘                 └──────────┘
-
-
 ---
 
 ## 📦 Installation
