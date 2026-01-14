@@ -123,7 +123,7 @@ Either instance: Click "Hang Up" to end
 
 ## 📝 License
 
-MIT License - see [LICENSE](LICENSE) file.
+MIT License
 
 ---
 
