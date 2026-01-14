@@ -81,7 +81,7 @@ Delphi VOIP Phone is a minimal yet complete peer-to-peer voice calling applicati
 | Component | Purpose | Source |
 |-----------|---------|--------|
 | NetCom7 | TCP Sockets | [GitHub](https://github.com/DelphiBuilder/NetCom7) |
-| Audio-Link | WASAPI Audio | [GitHub](https://github.com/BitmasterXor/Delphi_AudioComponents) |
+| Audio-Link | WASAPI Audio | [GitHub]([https://github.com/BitmasterXor/Delphi_AudioComponents](https://github.com/BitmasterXor/Delphi_Audio-Link_Components)) |
 
 ### Installation Steps
 1. Install NetCom7 components in Delphi IDE
