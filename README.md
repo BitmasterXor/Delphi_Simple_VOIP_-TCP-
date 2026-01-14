@@ -1,4 +1,4 @@
-# 📞 Delphi VOIP Phone
+# 📞 Delphi Simple VOIP Phone
 **Minimal Peer-to-Peer Voice Calling Application for Delphi**
 
 <div align="center">
