@@ -14,6 +14,9 @@
 
 ---
 
+![Application Screenshot](Images%20And%20Resources/preview.png)
+
+
 ## 🚀 Overview
 
 Delphi VOIP Phone is a minimal yet complete peer-to-peer voice calling application. It demonstrates how to build real-time audio communication using TCP sockets with surprisingly little code. Each instance can act as both a server (receive calls) and client (make calls), enabling true peer-to-peer communication.
