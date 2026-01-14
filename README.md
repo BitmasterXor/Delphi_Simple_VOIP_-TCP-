@@ -29,40 +29,6 @@ Delphi VOIP Phone is a minimal yet complete peer-to-peer voice calling applicati
 
 ---
 
-## 🏗️ Architecture
-
-┌─────────────────────────────────────────────────────────────────┐
-│                        VOIP PHONE FLOW                          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  INSTANCE A (Server)              INSTANCE B (Client)           │
-│  ┌─────────────────┐              ┌─────────────────┐          │
-│  │ Click "Listen"  │              │ Enter IP:Port   │          │
-│  │ on Port 5000    │              │ Click "Call"    │          │
-│  └────────┬────────┘              └────────┬────────┘          │
-│           │                                │                    │
-│           │◄───── TCP Connection ──────────┤                    │
-│           │                                │                    │
-│           │◄───── CALL_REQUEST (1) ────────┤                    │
-│           │                                │                    │
-│  ┌────────▼────────┐                       │                    │
-│  │ "Incoming Call" │                       │                    │
-│  │ Accept/Decline? │                       │                    │
-│  └────────┬────────┘                       │                    │
-│           │                                │                    │
-│           ├────── CALL_ACCEPT (2) ────────►│                    │
-│           │                                │                    │
-│  ┌────────▼────────┐              ┌────────▼────────┐          │
-│  │   IN CALL       │◄── AUDIO ──►│    IN CALL      │          │
-│  │ Mic ──► Speaker │   (5)       │ Mic ──► Speaker │          │
-│  └─────────────────┘              └─────────────────┘          │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-
-
-
----
-
 ## ⭐ Key Features
 
 ### 📞 Call Management
