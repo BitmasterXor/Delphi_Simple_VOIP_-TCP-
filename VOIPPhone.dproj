@@ -1,0 +1,195 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+        <ProjectVersion>20.2</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>VOIPPhone.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <ProjectName Condition="'$(ProjectName)'==''">VOIPPhone</ProjectName>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <SanitizedProjectName>VOIPPhone</SanitizedProjectName>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <Custom_Styles>&quot;Cobalt XEMedia|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CobaltXEMedia.vsf&quot;</Custom_Styles>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_UsePackage>rtl;vcl;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="uMain.pas">
+            <Form>frmVOIP</Form>
+        </DCCReference>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">VOIPPhone.dpr</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtbar290.bpl">LMD BarPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtrtlx290.bpl">LMD Extended Runtime Library</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtl290.bpl">LMD 2024 - Runtime Library</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtchart290.bpl">LMD ChartPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtprint290.bpl">LMD PrintPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtchartdb290.bpl">LMD ChartPack Database Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtcore290.bpl">LMD-Tools Core Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtdesign290.bpl">LMD DesignPack Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtinspector290.bpl">LMD-Tools InspectorPack Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtdialog290.bpl">LMD-Tools DialogPack Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtdocking290.bpl">LMD DockingPack Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtelcore290.bpl">LMD ElPack Core Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrteldb290.bpl">LMD ElPack - Database Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtelpro290.bpl">LMD ElPack - Professional Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtfx290.bpl">LMD-Tools FxPack Runtime Package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtgrid290.bpl">LMD-Tools Grid Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtide290.bpl">LMD IDE-Tools run-time package.</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtscript290.bpl">LMD ScriptPack run-time package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtplugin290.bpl">LMD Plug-In Library</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtrtf290.bpl">LMD-Tools RichPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtrtfdb290.bpl">LMD-Tools RichPack Database Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtscriptimp290.bpl">LMD 2024 - IDE-Tools ScriptPack Import Wizard</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtsearchdb290.bpl">LMD SearchPack Database Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtsearch290.bpl">LMD SearchPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtshell290.bpl">LMD-Tools ShellPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtspell290.bpl">LMD SpellPack Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtstorage290.bpl">LMD StoragePack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtsyntax290.bpl">LMD SyntaxEdit Runtime package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtsys290.bpl">LMD-Tools SysPack Runtime Package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtthemes290.bpl">LMD Themes Support Package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrttools290.bpl">LMD-Tools Main Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrttoolsdb290.bpl">LMD-Tools Main Database Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\lmdrtweb290.bpl">LMD-Tools WebPack Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\ngcommon290.bpl">NG Common Units</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\ngdialogs290.bpl">NG DialogsPack</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\ngdragdrop290.bpl">NG DragDrop</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\nghtml290.bpl">NG HtmlPack</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\ngvldtctrls290.bpl">NG ValidatorPack Sample Controls</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Delphi 12.2 Athens Components\LMD VCL Complete v2024.4 for Delphi 12 Athens+ CRACK\BPL\ngvalidators290.bpl">NG ValidatorPack</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp290.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>
