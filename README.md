@@ -14,7 +14,7 @@
 
 ---
 
-![Application Screenshot](https://github.com/BitmasterXor/Delphi_Simple_VOIP_-TCP-/blob/main/Images%20And%20Media/Preview.png?raw=true)
+<center>![Application Screenshot](https://github.com/BitmasterXor/Delphi_Simple_VOIP_-TCP-/blob/main/Images%20And%20Media/Preview.png?raw=true)</center>
 
 
 ## 🚀 Overview
