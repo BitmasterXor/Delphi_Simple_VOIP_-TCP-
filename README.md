@@ -1,4 +1,4 @@
-# 📞 Delphi Simple VOIP Phone
+# 📞 Delphi VOIP Phone
 **Minimal Peer-to-Peer Voice Calling Application for Delphi**
 
 <div align="center">
@@ -31,111 +31,167 @@ Delphi VOIP Phone is a minimal yet complete peer-to-peer voice calling applicati
 
 ## 🏗️ Architecture
 
-```mermaid
-graph TD
-    subgraph "Instance A - Server Mode"
-        A1[TCP Server] --> A2[Listens on Port]
-        A2 --> A3[Accepts Connection]
-        A3 --> A4[Receives CALL_REQUEST]
-        A4 --> A5{User Decision}
-        A5 -->|Accept| A6[Send CALL_ACCEPT]
-        A5 -->|Decline| A7[Send CALL_DECLINE]
-        A6 --> A8[Start Audio Stream]
-    end
-    
-    subgraph "Instance B - Client Mode"
-        B1[TCP Client] --> B2[Connects to IP:Port]
-        B2 --> B3[Send CALL_REQUEST]
-        B3 --> B4{Wait for Response}
-        B4 -->|CALL_ACCEPT| B5[Start Audio Stream]
-        B4 -->|CALL_DECLINE| B6[Return to Idle]
-    end
-    
-    A8 <-->|Bidirectional Audio| B5
-⭐ Key Features
-📞 Call Management
-Listen Mode - Start server to receive incoming calls on specified port
-Outgoing Calls - Connect to remote peer using IP:Port format
-Accept/Decline - Handle incoming calls with user interaction
-Hang Up - End active calls cleanly from either side
-🎤 Audio System
-WASAPI Integration - Low-latency audio capture and playback
-Device Enumeration - List all available microphones and speakers
-Real-time Streaming - Continuous audio transmission during calls
-Volume Control - Independent sliders for input and output (0-100%)
-🌐 Network Protocol
-Simple Protocol - 5 single-byte commands for all operations
-TCP Reliability - Guaranteed delivery using NetCom7 sockets
-Minimal Overhead - 1-byte header for command identification
-📡 Protocol Specification
-Command Bytes
-Command	Value	Direction	Description
-CALL_REQUEST	1	Client → Server	"I want to call you"
-CALL_ACCEPT	2	Server → Client	"I'll take the call"
-CALL_DECLINE	3	Server → Client	"No thanks"
-HANGUP	4	Bidirectional	"Ending the call"
-AUDIO	5	Bidirectional	Audio data follows
-State Machine
+┌─────────────────────────────────────────────────────────────────┐
+│                        VOIP PHONE FLOW                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  INSTANCE A (Server)              INSTANCE B (Client)           │
+│  ┌─────────────────┐              ┌─────────────────┐          │
+│  │ Click "Listen"  │              │ Enter IP:Port   │          │
+│  │ on Port 5000    │              │ Click "Call"    │          │
+│  └────────┬────────┘              └────────┬────────┘          │
+│           │                                │                    │
+│           │◄───── TCP Connection ──────────┤                    │
+│           │                                │                    │
+│           │◄───── CALL_REQUEST (1) ────────┤                    │
+│           │                                │                    │
+│  ┌────────▼────────┐                       │                    │
+│  │ "Incoming Call" │                       │                    │
+│  │ Accept/Decline? │                       │                    │
+│  └────────┬────────┘                       │                    │
+│           │                                │                    │
+│           ├────── CALL_ACCEPT (2) ────────►│                    │
+│           │                                │                    │
+│  ┌────────▼────────┐              ┌────────▼────────┐          │
+│  │   IN CALL       │◄── AUDIO ──►│    IN CALL      │          │
+│  │ Mic ──► Speaker │   (5)       │ Mic ──► Speaker │          │
+│  └─────────────────┘              └─────────────────┘          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
 
-┌─────────┐  Incoming    ┌──────────┐
-│  IDLE   │─────────────>│ RINGING  │
-│   (0)   │  Connection  │   (1)    │
-└────┬────┘              └────┬─────┘
-     │                        │
-     │ Call Button       Accept│Decline
-     │                        │
-     v                        v
-┌─────────┐  CALL_ACCEPT ┌──────────┐
-│ CALLING │<────────────>│ IN_CALL  │
-│   (3)   │              │   (2)    │
-└─────────┘              └──────────┘
-📦 Installation
-Prerequisites
-Delphi 12.2 Athens (or compatible version)
-Windows Vista+ (WASAPI requirement)
-Required Components
-NetCom7 - TCP Socket Components
-Audio-Link Components - WASAPI Audio I/O
-Installation Steps
-Install NetCom7 components in Delphi IDE
-Install Audio-Link components in Delphi IDE
-Open VOIPPhone.dproj in Delphi
-Add component source paths to Project Search Path
-Build and Run!
-🚀 Usage
-Making a Call
 
-1. Instance A: Click "Listen" (starts server on port 5000)
-2. Instance B: Enter "192.168.1.100:5000" in Call IP field
-3. Instance B: Click "Call"
-4. Instance A: Sees "Incoming Call..." - Click "Accept"
-5. Both instances: Now in active voice call!
-6. Either instance: Click "Hang Up" to end
-🎛️ Audio Configuration
-Parameter	Value	Description
-Sample Rate	16000 Hz	Optimized for voice
-Channels	1 (Mono)	Single channel
-Bit Depth	16-bit	Standard PCM
-Bandwidth	~260 kbps	Per direction
-🔧 Code Structure
-File	Description
-VOIPPhone.dpr	Project file
-uMain.pas	Main unit (~300 lines, fully commented)
-uMain.dfm	Form definition
-📝 License
-MIT License - see LICENSE file.
 
-👨‍💻 Author
-BitmasterXor
+---
 
-GitHub: @BitmasterXor
-🤝 Dependencies
-Component	Purpose	Source
-NetCom7	TCP Sockets	GitHub
-Audio-Link	WASAPI Audio	GitHub
+## ⭐ Key Features
+
+### 📞 Call Management
+- **Listen Mode** - Start server to receive incoming calls on specified port
+- **Outgoing Calls** - Connect to remote peer using IP:Port format
+- **Accept/Decline** - Handle incoming calls with user interaction
+- **Hang Up** - End active calls cleanly from either side
+
+### 🎤 Audio System
+- **WASAPI Integration** - Low-latency audio capture and playback
+- **Device Enumeration** - List all available microphones and speakers
+- **Real-time Streaming** - Continuous audio transmission during calls
+- **Volume Control** - Independent sliders for input and output (0-100%)
+
+### 🌐 Network Protocol
+- **Simple Protocol** - 5 single-byte commands for all operations
+- **TCP Reliability** - Guaranteed delivery using NetCom7 sockets
+- **Minimal Overhead** - 1-byte header for command identification
+
+---
+
+## 📡 Protocol Specification
+
+### Command Bytes
+
+| Command | Value | Direction | Description |
+|---------|-------|-----------|-------------|
+| CALL_REQUEST | 1 | Client to Server | I want to call you |
+| CALL_ACCEPT | 2 | Server to Client | I accept the call |
+| CALL_DECLINE | 3 | Server to Client | I decline the call |
+| HANGUP | 4 | Bidirectional | Ending the call |
+| AUDIO | 5 | Bidirectional | Audio data follows |
+
+### State Machine
+
+
+     ┌──────────────────────────────────────┐
+     │                                      │
+     ▼                                      │
+┌─────────┐   Incoming      ┌──────────┐   │
+│  IDLE   │───Connection───►│ RINGING  │   │
+│   (0)   │                 │   (1)    │   │
+└────┬────┘                 └────┬─────┘   │
+     │                           │         │
+     │ Call                Accept│Decline  │
+     │ Button                    │         │
+     ▼                           ▼         │
+┌─────────┐   CALL_ACCEPT   ┌──────────┐   │
+│ CALLING │◄───────────────►│ IN_CALL  │───┘
+│   (3)   │                 │   (2)    │
+└─────────┘                 └──────────┘
+
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+- **Delphi 12.2 Athens** (or compatible version)
+- **Windows Vista+** (WASAPI requirement)
+
+### Required Components
+
+| Component | Purpose | Source |
+|-----------|---------|--------|
+| NetCom7 | TCP Sockets | [GitHub](https://github.com/DelphiBuilder/NetCom7) |
+| Audio-Link | WASAPI Audio | [GitHub](https://github.com/BitmasterXor/Delphi_AudioComponents) |
+
+### Installation Steps
+1. Install NetCom7 components in Delphi IDE
+2. Install Audio-Link components in Delphi IDE
+3. Open `VOIPPhone.dproj` in Delphi
+4. Add component source paths to Project Search Path
+5. Build and Run!
+
+---
+
+## 🚀 Usage
+
+### Making a Call
+
+Instance A: Click "Listen" (starts server on port 5000)
+Instance B: Enter "192.168.1.100:5000" in Call IP field
+Instance B: Click "Call"
+Instance A: Sees "Incoming Call..." - Click "Accept"
+Both instances: Now in active voice call!
+Either instance: Click "Hang Up" to end
+
+
+---
+
+## 🎛️ Audio Configuration
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Sample Rate | 16000 Hz | Optimized for voice |
+| Channels | 1 (Mono) | Single channel |
+| Bit Depth | 16-bit | Standard PCM |
+| Bandwidth | ~260 kbps | Per direction |
+
+---
+
+## 🔧 Code Structure
+
+| File | Description |
+|------|-------------|
+| `VOIPPhone.dpr` | Project file |
+| `uMain.pas` | Main unit (~300 lines, fully commented) |
+| `uMain.dfm` | Form definition |
+
+---
+
+## 📝 License
+
+MIT License - see [LICENSE](LICENSE) file.
+
+---
+
+## 👨‍💻 Author
+
+**BitmasterXor**
+- GitHub: [@BitmasterXor](https://github.com/BitmasterXor)
+
+---
+
 <div align="center">
-⭐ Star this repository if you find it useful!
 
-Made with ❤️ By BitmasterXor For the Delphi Community
+**⭐ Star this repository if you find it useful!**
 
-</div> ```
+**Made with ❤️ By BitmasterXor For the Delphi Community**
+
+</div>
